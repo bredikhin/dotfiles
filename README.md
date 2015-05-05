@@ -1,0 +1,2 @@
+# dotvimrc
+Opinionated Vim configuration
