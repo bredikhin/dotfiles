@@ -4,7 +4,7 @@ if !1 | finish | endif
 
 if has('vim_starting')
   if &compatible
-    set nocompatible               " Be iMproved
+    set nocompatible " Be iMproved
   endif
 
   " Required:
@@ -19,6 +19,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 
 call neobundle#end()
 
