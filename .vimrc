@@ -20,9 +20,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'henrik/vim-indexed-search'
+
 
 call neobundle#end()
 
