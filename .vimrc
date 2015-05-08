@@ -1,4 +1,4 @@
-"NeoBundle Scripts-----------------------------
+" <NeoBundle Scripts>
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -37,7 +37,7 @@ filetype plugin indent on
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
 
-" Non-plugin stuff
+" <Non-plugin Stuff>
 set backspace=indent,eol,start
 set ruler
 set number
@@ -46,3 +46,4 @@ set incsearch
 set hlsearch
 
 syntax on
+" </Non-plugin Stuff>
