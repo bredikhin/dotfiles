@@ -26,6 +26,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'kien/ctrlp.vim'
 
 call neobundle#end()
 
