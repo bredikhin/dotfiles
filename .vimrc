@@ -27,6 +27,7 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'nanotech/jellybeans.vim'
 
 call neobundle#end()
 
@@ -49,6 +50,10 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 " </bling/vim-airline>
+
+" <nanotech/jellybeans.vim>
+colorscheme jellybeans
+" </nanotech/jellybeans.vim>
 " </Plugin Options>
 
 " <Non-plugin Stuff>
