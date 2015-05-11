@@ -41,6 +41,11 @@ NeoBundleCheck
 " </NeoBundle Scripts>
 
 " <Plugin Options>
+" <scrooloose/nerdtree>
+" Open/close NERDTree Tabs with \t
+nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+" </scrooloose/nerdtree>
+
 " <bling/vim-airline>
 " Always show statusbar
 set laststatus=2
