@@ -28,6 +28,7 @@ NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
 
 call neobundle#end()
@@ -75,6 +76,17 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
 " </kien/ctrlp.vim>
+
+" <scrooloose/syntastic>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" </scrooloose/syntastic>
 
 " <nanotech/jellybeans.vim>
 colorscheme jellybeans
