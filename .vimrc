@@ -102,4 +102,9 @@ set incsearch
 set hlsearch
 
 syntax on
+
+" Remember the last position in a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 " </Non-plugin Stuff>
