@@ -30,6 +30,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'tpope/vim-surround'
 
 call neobundle#end()
 
