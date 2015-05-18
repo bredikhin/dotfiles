@@ -31,6 +31,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'Raimondi/delimitMate'
 
 call neobundle#end()
 
