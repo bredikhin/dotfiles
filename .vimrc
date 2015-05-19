@@ -96,6 +96,8 @@ set number
 set showcmd
 set incsearch
 set hlsearch
+set hidden
+set history=100
 
 syntax on
 
