@@ -45,10 +45,10 @@ NeoBundleCheck
 " </NeoBundle Scripts>
 
 " <Plugin Options>
-" <scrooloose/nerdtree>
+" <jistr/vim-nerdtree-tabs>
 " Open/close NERDTree Tabs with \t
 nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-" </scrooloose/nerdtree>
+" </jistr/vim-nerdtree-tabs>
 
 " <bling/vim-airline>
 " Always show statusbar
