@@ -34,6 +34,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'sheerun/vim-polyglot'
 
 call neobundle#end()
 
