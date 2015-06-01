@@ -33,6 +33,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'rking/ag.vim'
 
 call neobundle#end()
 
