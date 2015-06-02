@@ -47,10 +47,10 @@ NeoBundleCheck
 " </NeoBundle Scripts>
 
 " <Plugin Options>
-" <jistr/vim-nerdtree-tabs>
-" Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
-" </jistr/vim-nerdtree-tabs>
+" "<scrooloose/nerdtree>
+map <c-t> :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
+" </scrooloose/nerdtree>
 
 " <bling/vim-airline>
 " Always show statusbar
@@ -93,6 +93,8 @@ colorscheme jellybeans
 " </Plugin Options>
 
 " <Non-plugin Stuff>
+let mapleader='\'
+set encoding=utf-8
 set backspace=indent,eol,start
 set ruler
 set number
@@ -101,8 +103,13 @@ set incsearch
 set hlsearch
 set hidden
 set history=100
-
+set autoread
+set splitright
+set splitbelow
 syntax on
+
+set ttyfast
+set mouse=a
 
 " Remember the last position in a file
 if has("autocmd")
