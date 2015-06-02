@@ -61,6 +61,9 @@ let g:airline_detect_paste=1
 
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 " </bling/vim-airline>
 
 " <kien/ctrlp.vim>
