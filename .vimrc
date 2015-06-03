@@ -114,8 +114,35 @@ syntax on
 set ttyfast
 set mouse=a
 
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
+
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+nnoremap <space> za
+vnoremap <space> zf
+
 " Remember the last position in a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 " </Non-plugin Stuff>
+
+" <Bindings>
+" Open a new empty buffer
+nmap <leader>T :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+" </Bindings>
