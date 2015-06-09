@@ -89,6 +89,9 @@ nmap <leader>bs :CtrlPMRU<cr>
 " <scrooloose/syntastic>
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+map <Leader>e :Errors<cr>
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 " </scrooloose/syntastic>
 
 " <nanotech/jellybeans.vim>
