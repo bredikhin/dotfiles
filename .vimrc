@@ -35,6 +35,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'jeetsukumaran/vim-buffergator'
 
 call neobundle#end()
 
@@ -93,6 +94,23 @@ let g:syntastic_check_on_wq = 0
 " <nanotech/jellybeans.vim>
 colorscheme jellybeans
 " </nanotech/jellybeans.vim>
+
+" <jeetsukumaran/vim-buffergator>
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+
+" Use custom keymappings
+let g:buffergator_suppress_keymaps = 1
+
+" Previous buffer
+nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+
+" Next buffer
+nmap <leader>kk :BuffergatorMruCycleNext<cr>
+
+" View the entire list of buffers open
+nmap <leader>bl :BuffergatorOpen<cr>
+" </jeetsukumaran/vim-buffergator>
 " </Plugin Options>
 
 " <Non-plugin Stuff>
