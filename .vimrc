@@ -117,7 +117,7 @@ nmap <leader>bl :BuffergatorOpen<cr>
 " </Plugin Options>
 
 " <Non-plugin Stuff>
-let mapleader='\'
+let mapleader = ","
 set encoding=utf-8
 set backspace=indent,eol,start
 set ruler
@@ -168,4 +168,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
+
+" Refresh .vimrc
+map <leader>rr :source ~/.vimrc<CR>
+
+" ESC
+inoremap jj <ESC>
 " </Bindings>
