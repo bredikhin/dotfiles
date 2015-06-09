@@ -48,7 +48,7 @@ NeoBundleCheck
 " </NeoBundle Scripts>
 
 " <Plugin Options>
-" "<scrooloose/nerdtree>
+" <scrooloose/nerdtree>
 map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 " </scrooloose/nerdtree>
@@ -129,9 +129,11 @@ set splitright
 set splitbelow
 syntax on
 
+" Mouse
 set ttyfast
 set mouse=a
 
+" Scrolling
 set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
