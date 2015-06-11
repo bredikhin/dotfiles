@@ -141,6 +141,12 @@ set scrolloff=10
 set sidescrolloff=15
 set sidescroll=1
 
+" Completion
+set wildmode=longest,list,full
+set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~     " Stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
