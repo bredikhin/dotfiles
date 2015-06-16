@@ -48,6 +48,12 @@ NeoBundleCheck
 " </NeoBundle Scripts>
 
 " <Plugin Options>
+" <airblade/vim-gitgutter>
+map <c-h> :GitGutterLineHighlightsToggle<CR>
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+" </airblade/vim-gitgutter>
+
 " <scrooloose/nerdtree>
 map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
