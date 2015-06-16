@@ -67,10 +67,10 @@ set laststatus=2
 let g:airline_detect_paste=1
 
 " Show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 
 " Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#fnamemod=':t'
 " </bling/vim-airline>
 
 " <kien/ctrlp.vim>
@@ -95,7 +95,7 @@ nmap <leader>bs :CtrlPMRU<cr>
 " <scrooloose/syntastic>
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-map <Leader>e :Errors<cr>
+map <leader>e :Errors<cr>
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 " </scrooloose/syntastic>
@@ -153,6 +153,7 @@ set wildmenu                    " Enable ctrl-n and ctrl-p to scroll thru matche
 set wildignore=*.o,*.obj,*~     " Stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 
+" Folding
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
