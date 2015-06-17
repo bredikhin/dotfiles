@@ -1,0 +1,126 @@
+# set Zsh as your default Tmux shell
+set-option -g default-shell /bin/zsh
+
+# UTF is great, let us use that
+set -g utf8
+set-window-option -g utf8 on
+
+# Tmux should be pretty, we need 256 color for that
+set -g default-terminal "screen-256color"
+
+
+# Tmux uses a 'control key', let's set it to 'Ctrl-a'
+# Reason: 'Ctrl-a' is easier to reach than 'Ctrl-b'
+set -g prefix C-a
+unbind C-b
+
+# command delay? We don't want that, make it short
+set -sg escape-time 1
+
+# set the numbering of windows to go from 1 instead
+# of 0 - silly programmers :|
+set-option -g base-index 1
+setw -g pane-base-index 1
+
+# make the current window the first window
+bind T swap-window -t 1
+
+# map vim movement keys as pane movement keys
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# use C-h and C-l to cycle thru panes
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# resize panes
+bind H resize-pane -L 5
+bind J resize-pane -D 5
+bind K resize-pane -U 5
+bind L resize-pane -R 5
+
+# explicitly disable mouse control
+setw -g mode-mouse off
+set -g mouse-select-pane off
+set -g mouse-resize-pane off
+set -g mouse-select-window off
+
+# Allow us to reload our Tmux configuration while
+# using Tmux
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Getting interesting now, we use the vertical and horizontal
+# symbols to split the screen
+bind | split-window -h
+bind - split-window -v
+
+# set pane colors - hilight the active pane
+set-option -g pane-border-fg 'colour236'
+set-option -g pane-active-border-fg 'colour25'
+
+# colorize messages in the command line
+set-option -g message-bg 'colour236'
+set-option -g message-fg 'yellow'
+
+# visual notification of activity in other windows
+setw -g monitor-activity on
+set -g visual-activity on
+
+# set color for status bar
+set-option -g status-bg 'colour235' #base02
+set-option -g status-fg 'yellow' #yellow
+set-option -g status-attr 'dim'
+
+# set window list colors - red for active and cyan for inactive
+set-window-option -g window-status-fg 'brightblue'
+set-window-option -g window-status-bg 'colour236'
+set-window-option -g window-status-attr 'dim'
+
+set-window-option -g window-status-current-fg 'red'
+set-window-option -g window-status-current-bg 'colour236'
+set-window-option -g window-status-current-attr 'bright'
+
+# show host name and IP address on left side of status bar
+set -g status-left-length 70
+set -g status-left "#[fg=green]: #h : #[fg=brightblue]#(curl icanhazip.com) #[fg=yellow]#(ifconfig en0 | grep 'inet ' | awk '{print \"en0 \" $2}') #(ifconfig en1 | grep 'inet ' | awk '{print \"en1 \" $2}') #[fg=red]#(ifconfig tun0 | grep 'inet ' | awk '{print \"vpn \" $2}') "
+
+# show session name, window & pane number, date and time on right side of
+# status bar
+set -g status-right-length 60
+set -g status-right "#[fg=blue]#S #I:#P #[fg=yellow]:: %d %b %Y #[fg=green]:: %l:%M %p :: #(date -u | awk '{print $4}')::"
+
+# ----------------------
+# Status Bar
+# -----------------------
+set-option -g status on                # turn the status bar on
+set -g status-utf8 on                  # set utf-8 for the status bar
+set -g status-interval 5               # set update frequencey (default 15 seconds)
+set -g status-justify centre           # center window list for clarity
+
+set-option -g status-position bottom
+# List of plugins
+# Supports `github_username/repo` or full git repo URLs
+set -g @tpm_plugins '              \
+  tmux-plugins/tpm                 \
+  tmux-plugins/tmux-resurrect      \
+  tmux-plugins/tmux-sensible       \
+  tmux-plugins/tmux-continuum      \
+'
+
+# resurrect options
+set -g @resurrect-save-bash-history 'on'
+
+# continuum options
+set -g @continuum-boot 'on'
+set -g @continuum-restore 'on'
+
+# Other examples:
+# github_username/plugin_name    \
+# git@github.com/user/plugin     \
+# git@bitbucket.com/user/plugin  \
+
+# Initializes TMUX plugin manager.
+# Keep this line at the very bottom of tmux.conf.
+run-shell '~/.tmux/plugins/tpm/tpm'
