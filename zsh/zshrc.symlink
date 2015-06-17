@@ -105,3 +105,4 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.dotfiles/tmuxifier"
 eval "$(tmuxifier init -)"
 tmuxifier load-session default
+tmuxifier load-session lb

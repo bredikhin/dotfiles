@@ -1,6 +1,8 @@
 session_root "~/Sites"
 if initialize_session "default"; then
-  load_window "default"
+  new_window "default"
+
+  run_cmd "ll"
 
   # Select the default active window on session creation.
   #select_window 1
