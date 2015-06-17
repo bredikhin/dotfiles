@@ -11,7 +11,7 @@ curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.s
 rm -rf ~/.vimrc && ln -s ~/.dotfiles/vim/vimrc.symlink ~/.vimrc
 
 # zsh
-rm -rf ~/.oh-my-zsh && curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+rm -rf ~/.oh-my-zsh && curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | zsh
 rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 
 # tmux
