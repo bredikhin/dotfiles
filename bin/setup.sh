@@ -4,6 +4,9 @@
 # tmuxifier
 rm -rf ~/.tmuxifier && git clone git@github.com:bredikhin/tmuxifier.git ~/.tmuxifier
 
+# git up
+gem install git-up
+
 # configs
 
 # vim
