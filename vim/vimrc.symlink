@@ -37,6 +37,7 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'jeetsukumaran/vim-buffergator'
+NeoBundle 'reedes/vim-thematic'
 
 call neobundle#end()
 
@@ -125,6 +126,22 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
 " </jeetsukumaran/vim-buffergator>
+
+" <reedes/vim-thematic>
+let g:thematic#defaults = {
+\   'background': 'dark'
+\ }
+let g:thematic#themes = {
+\   'jellybeans': {
+\   },
+\   'solarized': {
+\   },
+\   'light': {
+\     'colorscheme': 'solarized',
+\     'background': 'light'
+\   }
+\ }
+" </reedes/vim-thematic>
 " </Plugin Options>
 
 " <Non-plugin Stuff>
