@@ -30,6 +30,7 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'scrooloose/nerdcommenter'
@@ -103,6 +104,10 @@ let g:syntastic_warning_symbol = "⚠"
 " <nanotech/jellybeans.vim>
 colorscheme jellybeans
 " </nanotech/jellybeans.vim>
+
+"<altercation/vim-colors-solarized>
+let g:solarized_termcolors = 256
+"</altercation/vim-colors-solarized>
 
 " <jeetsukumaran/vim-buffergator>
 " Use the right side of the screen
