@@ -82,6 +82,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gcb='gco develop && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # colors
 export TERM=xterm-256color
