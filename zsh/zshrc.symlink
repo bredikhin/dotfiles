@@ -91,7 +91,7 @@ export TERM=xterm-256color
 # allows you to type Bash style comments on your command line
 setopt interactivecomments
 
-# use vim as default editor 
+# use vim as default editor
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
@@ -105,5 +105,11 @@ alias ez='vim ~/.zshrc'
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.dotfiles/tmuxifier"
 eval "$(tmuxifier init -)"
-tmuxifier load-session default
 tmuxifier load-session lb
+tmuxifier load-session default
+
+# Go
+export GOPATH=$HOME/Projects/go
+
+# AWS
+export PATH=$PATH:$HOME/.local/lib/aws/bin
