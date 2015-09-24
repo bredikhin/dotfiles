@@ -1,11 +1,10 @@
 session_root "~/Projects"
 if initialize_session "default"; then
   new_window "default"
-
-  run_cmd "ll"
-
-  # Select the default active window on session creation.
-  #select_window 1
+  split_h 50
+  select_pane 2
+  split_v 50
+  select_pane 1
 fi
 
 finalize_and_go_to_session
