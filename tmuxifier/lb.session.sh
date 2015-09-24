@@ -1,4 +1,4 @@
-session_root "~/Sites/ct/lb/lb"
+session_root "~/Projects/ct/lb/lb"
 if initialize_session "lb"; then
   load_window "editor"
   load_window "lblogs"

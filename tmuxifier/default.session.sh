@@ -1,4 +1,4 @@
-session_root "~/Sites"
+session_root "~/Projects"
 if initialize_session "default"; then
   new_window "default"
 
