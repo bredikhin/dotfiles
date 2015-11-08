@@ -110,6 +110,7 @@ tmuxifier load-session default
 
 # Go
 export GOPATH=$HOME/Projects/go
+export PATH=$PATH:$GOPATH/bin
 
 # AWS
 export PATH=$PATH:$HOME/.local/lib/aws/bin
