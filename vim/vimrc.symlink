@@ -1,4 +1,4 @@
-" <NeoBundle Scripts>
+" NeoBundle Scripts {{{
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -47,21 +47,21 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-" </NeoBundle Scripts>
+" }}}
 
-" <Plugin Options>
-" <airblade/vim-gitgutter>
+" Plugin Options {{{
+" airblade/vim-gitgutter {{{
 map <c-h> :GitGutterLineHighlightsToggle<CR>
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
-" </airblade/vim-gitgutter>
+" }}}
 
-" <scrooloose/nerdtree>
+" scrooloose/nerdtree {{{
 map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
-" </scrooloose/nerdtree>
+" }}}
 
-" <bling/vim-airline>
+" bling/vim-airline {{{
 " Always show statusbar
 set laststatus=2
 
@@ -73,9 +73,9 @@ let g:airline#extensions#tabline#enabled=1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod=':t'
-" </bling/vim-airline>
+" }}}
 
-" <kien/ctrlp.vim>
+" kien/ctrlp.vim {{{
 " Setup some default ignores
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
@@ -92,25 +92,25 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
-" </kien/ctrlp.vim>
+" }}}
 
-" <scrooloose/syntastic>
+" scrooloose/syntastic {{{
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 map <leader>e :Errors<cr>
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-" </scrooloose/syntastic>
+" }}}
 
-" <nanotech/jellybeans.vim>
+" nanotech/jellybeans.vim {{{
 colorscheme jellybeans
-" </nanotech/jellybeans.vim>
+" }}}
 
-"<altercation/vim-colors-solarized>
+" altercation/vim-colors-solarized {{{
 let g:solarized_termcolors = 256
-"</altercation/vim-colors-solarized>
+" }}}
 
-" <jeetsukumaran/vim-buffergator>
+" jeetsukumaran/vim-buffergator {{{
 " Use the right side of the screen
 let g:buffergator_viewport_split_policy = 'R'
 
@@ -125,9 +125,9 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
-" </jeetsukumaran/vim-buffergator>
+" }}}
 
-" <reedes/vim-thematic>
+" reedes/vim-thematic {{{
 let g:thematic#defaults = {
 \   'background': 'dark'
 \ }
@@ -141,10 +141,10 @@ let g:thematic#themes = {
 \     'background': 'light'
 \   }
 \ }
-" </reedes/vim-thematic>
-" </Plugin Options>
+" }}}
+" }}}
 
-" <Non-plugin Stuff>
+" Non-plugin Stuff {{{
 let mapleader = ","
 set encoding=utf-8
 set backspace=indent,eol,start
@@ -186,9 +186,9 @@ vnoremap <space> zf
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-" </Non-plugin Stuff>
+" }}}
 
-" <Bindings>
+" Bindings {{{
 " Open a new empty buffer
 nmap <leader>T :enew<cr>
 
@@ -209,4 +209,6 @@ map <leader>rr :source ~/.vimrc<CR>
 
 " ESC
 inoremap jj <ESC>
-" </Bindings>
+" }}}
+
+" vim:foldenable:foldmethod=marker:foldlevel=0
