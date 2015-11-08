@@ -162,7 +162,9 @@ set history=100
 set autoread
 set splitright
 set splitbelow
+set lazyredraw
 syntax on
+set modelines=1
 
 " Mouse
 set ttyfast
@@ -185,6 +187,13 @@ set foldnestmax=3
 set nofoldenable
 nnoremap <space> za
 vnoremap <space> zf
+
+" Move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+
+" highlight last inserted text
+nnoremap gV `[v`]
 
 " Remember the last position in a file
 if has("autocmd")
