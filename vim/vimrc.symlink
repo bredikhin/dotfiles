@@ -208,6 +208,10 @@ nnoremap gV `[v`]
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Group swap and backup files
+set backupdir=./.backup,~/.backup,.,/tmp
+set dir=~/tmp
 " }}}
 
 " Bindings {{{
