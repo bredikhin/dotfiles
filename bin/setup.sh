@@ -13,8 +13,9 @@ sudo gem install git-up
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 rm -rf ~/.vimrc && ln -s ~/.dotfiles/vim/vimrc.symlink ~/.vimrc
 
-# zsh
-rm -rf ~/.oh-my-zsh && curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+# zsh config
+# install zsh first, e.g. `sudo apt-get install zsh`
+rm -rf ~/.oh-my-zsh && sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 rm -rf ~/.zshrc && ln -s ~/.dotfiles/zsh/zshrc.symlink ~/.zshrc
 
 # tmux
