@@ -177,7 +177,7 @@ set modelines=1
 
 " Mouse
 set ttyfast
-set mouse=a
+" set mouse=a
 
 " Scrolling
 set scrolloff=10
@@ -201,7 +201,7 @@ vnoremap <space> zf
 nnoremap j gj
 nnoremap k gk
 
-" highlight last inserted text
+" Highlight last inserted text
 nnoremap gV `[v`]
 
 " Remember the last position in a file
