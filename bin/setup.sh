@@ -5,7 +5,7 @@
 rm -rf ~/.tmuxifier && git clone https://github.com/bredikhin/tmuxifier.git ~/.tmuxifier
 
 # git up
-gem install git-up
+sudo gem install git-up
 
 # configs
 
