@@ -28,6 +28,7 @@ NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'FelikZ/ctrlp-py-matcher'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
 " NeoBundle 'altercation/vim-colors-solarized'
@@ -94,6 +95,10 @@ nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+" }}}
+
+" FelikZ/ctrlp-py-matcher {{{
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " }}}
 
 " scrooloose/syntastic {{{
