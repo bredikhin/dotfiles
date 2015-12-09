@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rbr/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/Users/rbr/pear/bin:/Users/rbr/.rvm/gems/ruby-1.9.3-p194/bin:/Users/rbr/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/rbr/.rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/go/bin:/Users/rbr/.rvm/bin:/Users/rbr/.rvm/bin:/Users/rbr/go/bin"
+export PATH="/usr/local/sbin:$HOME/pear/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/go/bin:$HOME/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
