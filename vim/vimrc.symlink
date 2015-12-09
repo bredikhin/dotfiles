@@ -22,22 +22,22 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
+" NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'sjl/badwolf'
+" NeoBundle 'altercation/vim-colors-solarized'
+" NeoBundle 'sjl/badwolf'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/nerdcommenter'
+" NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'rking/ag.vim'
-NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'jeetsukumaran/vim-buffergator'
+" NeoBundle 'sheerun/vim-polyglot'
+" NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'reedes/vim-thematic'
 NeoBundle 'elixir-lang/vim-elixir'
 
@@ -59,8 +59,8 @@ nmap [h <Plug>GitGutterPrevHunk
 " }}}
 
 " scrooloose/nerdtree {{{
-map <c-t> :NERDTreeToggle<CR>
-let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
+" map <c-t> :NERDTreeToggle<CR>
+" let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 " }}}
 
 " bling/vim-airline {{{
@@ -112,21 +112,25 @@ colorscheme jellybeans
 let g:solarized_termcolors = 256
 " }}}
 
+" sjl/badwolf {{{
+" colorscheme badwolf
+" }}}
+
 " jeetsukumaran/vim-buffergator {{{
 " Use the right side of the screen
-let g:buffergator_viewport_split_policy = 'R'
+" let g:buffergator_viewport_split_policy = 'R'
 
 " Use custom keymappings
-let g:buffergator_suppress_keymaps = 1
+" let g:buffergator_suppress_keymaps = 1
 
 " Previous buffer
-nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+" nmap <leader>jj :BuffergatorMruCyclePrev<cr>
 
 " Next buffer
-nmap <leader>kk :BuffergatorMruCycleNext<cr>
+" nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
 " View the entire list of buffers open
-nmap <leader>bl :BuffergatorOpen<cr>
+" nmap <leader>bl :BuffergatorOpen<cr>
 " }}}
 
 " reedes/vim-thematic {{{
