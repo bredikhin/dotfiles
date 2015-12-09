@@ -2,7 +2,7 @@
 # symlinked are in ~/.dotfiles/
 
 # tmuxifier
-rm -rf ~/.tmuxifier && git clone git@github.com:bredikhin/tmuxifier.git ~/.tmuxifier
+rm -rf ~/.tmuxifier && git clone https://github.com/bredikhin/tmuxifier.git ~/.tmuxifier
 
 # git up
 gem install git-up
