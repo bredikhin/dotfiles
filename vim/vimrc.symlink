@@ -45,6 +45,7 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'reedes/vim-thematic'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 call neobundle#end()
 
