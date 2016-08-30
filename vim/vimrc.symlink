@@ -237,6 +237,14 @@ map <leader>rr :source ~/.vimrc<CR>
 
 " ESC
 inoremap jj <ESC>
+
+" Fixed n/N search direction
+nnoremap <expr> n  'Nn'[v:searchforward]
+nnoremap <expr> N  'nN'[v:searchforward]
+
+" Keep selection after the shift
+xnoremap <  <gv
+xnoremap >  >gv
 " }}}
 
 " vim:foldenable:foldmethod=marker:foldlevel=0
