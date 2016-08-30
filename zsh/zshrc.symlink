@@ -82,6 +82,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Remove merged branches locally
 alias gcb='gco develop && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # colors
@@ -108,9 +110,6 @@ eval "$(tmuxifier init -)"
 tmuxifier load-session lb
 tmuxifier load-session default
 
-# Go
+# Paths
 export GOPATH=$HOME/Projects/go
-export PATH=$PATH:$GOPATH/bin
-
-# AWS
-export PATH=$PATH:$HOME/.local/lib/aws/bin
+export PATH=$PATH:$GOPATH/bin:$HOME/.local/lib/aws/bin:$HOME/bin
