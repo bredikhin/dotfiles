@@ -41,6 +41,7 @@ NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'rking/ag.vim'
 " NeoBundle 'sheerun/vim-polyglot'
 " NeoBundle 'jeetsukumaran/vim-buffergator'
+NeoBundle 'dag/vim2hs'
 NeoBundle 'reedes/vim-thematic'
 NeoBundle 'elixir-lang/vim-elixir'
 
