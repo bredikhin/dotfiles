@@ -43,6 +43,7 @@ NeoBundle 'rking/ag.vim'
 " NeoBundle 'jeetsukumaran/vim-buffergator'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'reedes/vim-thematic'
+NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
