@@ -107,8 +107,9 @@ alias ez='vim ~/.zshrc'
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.dotfiles/tmuxifier"
 eval "$(tmuxifier init -)"
-tmuxifier load-session lb
-tmuxifier load-session default
+
+# Load sessions described with tmuxifier
+# tmuxifier load-session lb && tmuxifier load-session default
 
 # Paths
 export GOPATH=$HOME/Projects/go
