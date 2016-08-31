@@ -1,10 +1,10 @@
-session_root "~/Projects/ct/lb/lb"
+session_root "~/Projects/ct/lb"
 if initialize_session "lb"; then
-  load_window "editor"
-  load_window "lblogs"
+  load_window "lb/lbapi"
+  load_window "lb/lbpro"
+  load_window "lb/lblogs"
 
   select_window 1
-  run_cmd "git up"
 fi
 
 finalize_and_go_to_session
