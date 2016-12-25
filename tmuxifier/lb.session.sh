@@ -1,4 +1,4 @@
-session_root "~/Projects/ct/lb"
+session_root "~/Projects/lb"
 if initialize_session "lb"; then
   load_window "lb/lbapi"
   load_window "lb/lbpro"
