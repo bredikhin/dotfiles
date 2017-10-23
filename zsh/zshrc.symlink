@@ -86,6 +86,28 @@ source $ZSH/oh-my-zsh.sh
 # Remove merged branches locally
 alias gcb='gco develop && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
+alias gup='git pull --rebase --autostash'
+
+# Reload coreaudiod / VDCAssistant (temporary fix for MBP 2016 issues)
+# alias resound='sudo launchctl unload /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist && sudo launchctl load /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist'
+# alias revideo='sudo killall VDCAssistant'
+
+# Open all the modified / generated files in the default editor
+alias ge='$EDITOR $(git ls-files -m -o --exclude-standard)'
+
+# Format json from the clipboard
+alias json='pbpaste | pp_json'
+
+# Create a new branch from develop and push to origin
+function gnb {
+  if (( $# == 0 ))
+  then
+    echo "usage: gnb <new branch name>"
+  else
+    gco develop && gco -b $1 && gp -u origin $1
+  fi
+}
+
 # colors
 export TERM=xterm-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
@@ -102,6 +124,7 @@ export VISUAL=$EDITOR
 alias ev='vim ~/.vimrc'
 alias et='vim ~/.tmux.conf'
 alias ez='vim ~/.zshrc'
+eval "$(hub alias -s)"
 
 # tmuxifier
 export PATH="$HOME/.tmuxifier/bin:$PATH"
