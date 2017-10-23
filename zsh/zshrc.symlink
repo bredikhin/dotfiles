@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git tmux mix jsontools jira)
 
 # User configuration
 
@@ -114,3 +114,5 @@ eval "$(tmuxifier init -)"
 # Paths
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin:$HOME/.local/lib/aws/bin:$HOME/bin
+
+export JIRA_DEFAULT_ACTION=dashboard
