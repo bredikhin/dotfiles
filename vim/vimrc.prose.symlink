@@ -1,0 +1,90 @@
+" NeoBundle Scripts {{{
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'junegunn/goyo.vim'
+
+call neobundle#end()
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+" }}}
+
+" Plugin Options {{{
+
+" reedes/vim-pencil {{{
+set nocompatible
+filetype plugin on
+
+let g:pencil#wrapModeDefault = 'soft'
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init({'wrap': 'hard'})
+augroup END
+" }}}
+
+" junegunn/goyo.vim {{{
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" Enable Goyo by default
+autocmd VimEnter,BufRead,BufNewFile * :Goyo
+
+nmap <leader>m :Goyo<CR>
+" }}}
+"
+" }}}
+
+" Non-plugin Stuff {{{
+set spell spelllang=en_us,ru_ru
+set autoindent
+set colorcolumn=0
+set nonumber
+set norelativenumber
+let macvim_hig_shift_movement = 1
+iabbrev -- —
+
+" Day One
+function! NewDayOne(...)
+  let cmd = ':silent w !dayone new'
+  if a:0 > 0
+    let cmd = join([cmd, ' -t ', a:1])
+    if a:0 > 1
+      let cmd = join([cmd, ' -j ', a:2])
+    endif
+  endif
+
+  execute cmd
+endfunc
+command! -nargs=* Dayone call NewDayOne(<f-args>)
+nmap <leader>mp call NewDayOne('morning\ pages', 'Дневник')<CR>
+
+" }}}
+
+" Bindings {{{
+" }}}
+
+" vim:foldenable:foldmethod=marker:foldlevel=0

@@ -20,33 +20,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-sleuth'
-" NeoBundle 'scrooloose/nerdtree'
-" NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'FelikZ/ctrlp-py-matcher'
-NeoBundle 'ruanyl/vim-gh-line'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nanotech/jellybeans.vim'
-" NeoBundle 'altercation/vim-colors-solarized'
-" NeoBundle 'sjl/badwolf'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Raimondi/delimitMate'
-" NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'rking/ag.vim'
-" NeoBundle 'sheerun/vim-polyglot'
-" NeoBundle 'jeetsukumaran/vim-buffergator'
-NeoBundle 'dag/vim2hs'
-NeoBundle 'reedes/vim-thematic'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'ElmCast/elm-vim'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'mtth/scratch.vim'
 
 call neobundle#end()
 
@@ -59,16 +38,11 @@ NeoBundleCheck
 " }}}
 
 " Plugin Options {{{
-" airblade/vim-gitgutter {{{
-map <c-h> :GitGutterLineHighlightsToggle<CR>
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-" }}}
-
 " scrooloose/nerdtree {{{
-" map <c-t> :NERDTreeToggle<CR>
-" let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
-" }}}
+map <c-t> :NERDTreeToggle<CR>
+let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
+let g:nerdtree_tabs_open_on_gui_startup = 0
+"  }}}
 
 " bling/vim-airline {{{
 " Always show statusbar
@@ -84,83 +58,14 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
 " }}}
 
-" kien/ctrlp.vim {{{
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-
-" Use the nearest .git directory as the cwd
-let g:ctrlp_working_path_mode = 'r'
-
-" Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
-
-" Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-" }}}
-
-" FelikZ/ctrlp-py-matcher {{{
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-" }}}
-
-" scrooloose/syntastic {{{
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-map <leader>e :Errors<cr>
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-" }}}
-
 " nanotech/jellybeans.vim {{{
 colorscheme jellybeans
 " }}}
 
-" altercation/vim-colors-solarized {{{
-let g:solarized_termcolors = 256
+" mtth/scratch.vim {{{
+let g:scratch_persistence_file="~/.vim/scratch"
 " }}}
 
-" sjl/badwolf {{{
-" colorscheme badwolf
-" }}}
-
-" jeetsukumaran/vim-buffergator {{{
-" Use the right side of the screen
-" let g:buffergator_viewport_split_policy = 'R'
-
-" Use custom keymappings
-" let g:buffergator_suppress_keymaps = 1
-
-" Previous buffer
-" nmap <leader>jj :BuffergatorMruCyclePrev<cr>
-
-" Next buffer
-" nmap <leader>kk :BuffergatorMruCycleNext<cr>
-
-" View the entire list of buffers open
-" nmap <leader>bl :BuffergatorOpen<cr>
-" }}}
-
-" reedes/vim-thematic {{{
-let g:thematic#defaults = {
-\   'background': 'dark'
-\ }
-let g:thematic#themes = {
-\   'jellybeans': {
-\   },
-\   'solarized': {
-\   },
-\   'badwolf': {
-\   },
-\   'light': {
-\     'colorscheme': 'solarized',
-\     'background': 'light'
-\   }
-\ }
-" }}}
 " }}}
 
 " Non-plugin Stuff {{{
@@ -168,8 +73,6 @@ let mapleader = ","
 set encoding=utf-8
 set backspace=indent,eol,start
 set ruler
-set number
-set relativenumber
 set showcmd
 set incsearch
 set hlsearch
@@ -179,8 +82,10 @@ set autoread
 set splitright
 set splitbelow
 set lazyredraw
-syntax on
 set modelines=1
+set spell spelllang=en_us
+set cursorline
+set clipboard=unnamed
 
 " Mouse
 set ttyfast
@@ -237,8 +142,14 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
+" Close all the open buffers
+nmap <leader>z :bufdo bd<CR>
+
 " Refresh .vimrc
 map <leader>rr :source ~/.vimrc<CR>
+
+" Edit .vimrc files
+nmap <leader>v :args ~/.vimrc*<CR>
 
 " ESC
 inoremap jj <ESC>
@@ -250,6 +161,14 @@ nnoremap <expr> N  'nN'[v:searchforward]
 " Keep selection after the shift
 xnoremap <  <gv
 xnoremap >  >gv
+" }}}
+
+" Editor-specific settings {{{
+if has('gui_macvim')
+  source ~/.vimrc.prose
+else
+  source ~/.vimrc.code
+endif
 " }}}
 
 " vim:foldenable:foldmethod=marker:foldlevel=0

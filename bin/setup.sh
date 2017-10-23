@@ -12,6 +12,8 @@ sudo gem install git-up
 # install vim first, e.g. `sudo apt-get install vim`
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 rm -rf ~/.vimrc && ln -s ~/.dotfiles/vim/vimrc.symlink ~/.vimrc
+rm -rf ~/.vimrc.code && ln -s ~/.dotfiles/vim/vimrc.code.symlink ~/.vimrc.code
+rm -rf ~/.vimrc.prose && ln -s ~/.dotfiles/vim/vimrc.prose.symlink ~/.vimrc.prose
 
 # zsh config
 # install zsh first, e.g. `sudo apt-get install zsh`
