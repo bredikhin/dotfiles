@@ -1,4 +1,4 @@
-" NeoBundle Scripts {{{
+" NeoBundle Scripts {{{1
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
@@ -25,7 +25,27 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'henrik/vim-indexed-search'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'mtth/scratch.vim'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ruanyl/vim-gh-line'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-sleuth'
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'jremmen/vim-ripgrep'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'elixir-lang/vim-elixir'
+NeoBundle 'ElmCast/elm-vim'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'sheerun/vim-polyglot'
+NeoBundle 'jeetsukumaran/vim-buffergator'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'lyokha/vim-xkbswitch'
 
 call neobundle#end()
 
@@ -35,16 +55,14 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
-" }}}
 
-" Plugin Options {{{
-" scrooloose/nerdtree {{{
+" Plugin Options {{{1
+" scrooloose/nerdtree {{{2
 map <c-t> :NERDTreeToggle<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 let g:nerdtree_tabs_open_on_gui_startup = 0
-"  }}}
 
-" bling/vim-airline {{{
+" bling/vim-airline {{{2
 " Always show statusbar
 set laststatus=2
 
@@ -56,19 +74,112 @@ let g:airline#extensions#tabline#enabled=1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod=':t'
-" }}}
 
-" nanotech/jellybeans.vim {{{
+" nanotech/jellybeans.vim {{{2
 colorscheme jellybeans
-" }}}
 
-" mtth/scratch.vim {{{
-let g:scratch_persistence_file="~/.vim/scratch"
-" }}}
+" airblade/vim-gitgutter {{{2
+map <c-h> :GitGutterLineHighlightsToggle<CR>
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
-" }}}
+" tpope/vim-fugitive {{{2
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" Non-plugin Stuff {{{
+" scrooloose/syntastic {{{2
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+map <leader>e :Errors<cr>
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+
+" kien/ctrlp.vim {{{
+" Setup some default ignores
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
+  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
+\}
+
+" Use the nearest .git directory as the cwd
+let g:ctrlp_working_path_mode = 'r'
+
+" Open multiple files in tabs
+let g:ctrlp_open_multiple_files = 'i'
+
+" Use a leader instead of the actual named binding
+nmap <leader>p :CtrlP<cr>
+
+" Easy bindings for its various modes
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bm :CtrlPMixed<cr>
+nmap <leader>bs :CtrlPMRU<cr>
+
+" Use ripgrep in CtrlP
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+  set wildignore+=*/.git/*,*/tmp/*,*.swp
+endif
+
+ " jeetsukumaran/vim-buffergator {{{2
+" Use the right side of the screen
+let g:buffergator_viewport_split_policy = 'R'
+
+" Use custom keymappings
+let g:buffergator_suppress_keymaps = 1
+
+" Previous buffer
+nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+
+" Next buffer
+nmap <leader>kk :BuffergatorMruCycleNext<cr>
+
+" View the entire list of buffers open
+nmap <leader>bl :BuffergatorOpen<cr>
+
+" SirVer/ultisnips {{{2
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+
+" reedes/vim-pencil {{{2
+set nocompatible
+filetype plugin on
+
+let g:pencil#wrapModeDefault = 'soft'
+
+" junegunn/goyo.vim {{{2
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
+
+nmap <leader>m :Goyo<CR>
+
+" lyokha/vim-xkbswitch {{{2
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
+let g:XkbSwitchSkipIMappings = {'*': ['[', ']', '.', '>', ':', ';', ',', '{<CR>', '/*', '/*<CR>']}
+
+" Non-plugin Stuff {{{1
 let mapleader = ","
 set encoding=utf-8
 set backspace=indent,eol,start
@@ -85,7 +196,7 @@ set lazyredraw
 set modelines=1
 set spell spelllang=en_us
 set cursorline
-set clipboard=unnamed
+" set clipboard=unnamed
 
 " Mouse
 set ttyfast
@@ -124,9 +235,23 @@ endif
 " Group swap and backup files
 set backupdir=./.backup,~/.backup,.,/tmp
 set dir=~/tmp
-" }}}
 
-" Bindings {{{
+" Day One
+function! NewDayOne(...)
+  let cmd = ':silent w !dayone new'
+  if a:0 > 0
+    let cmd = join([cmd, ' -t ', a:1])
+    if a:0 > 1
+      let cmd = join([cmd, ' -j ', a:2])
+    endif
+  endif
+
+  execute cmd
+endfunc
+command! -nargs=* Dayone call NewDayOne(<f-args>)
+nmap <leader>mp :call NewDayOne('morning\ pages', 'Дневник')<CR>
+
+" Bindings {{{1
 " Open a new empty buffer
 nmap <leader>T :enew<cr>
 
@@ -148,8 +273,8 @@ nmap <leader>z :bufdo bd<CR>
 " Refresh .vimrc
 map <leader>rr :source ~/.vimrc<CR>
 
-" Edit .vimrc files
-nmap <leader>v :args ~/.vimrc*<CR>
+" Edit .vimrc file
+nmap <leader>v :e ~/.vimrc<CR>
 
 " ESC
 inoremap jj <ESC>
@@ -161,14 +286,25 @@ nnoremap <expr> N  'nN'[v:searchforward]
 " Keep selection after the shift
 xnoremap <  <gv
 xnoremap >  >gv
-" }}}
 
-" Editor-specific settings {{{
+" Editor / text type-specific settings {{{1
 if has('gui_macvim')
-  source ~/.vimrc.prose
+  set spell spelllang=en_us,ru_ru
+  set autoindent
+  set colorcolumn=0
+  set nonumber
+  set norelativenumber
+  let macvim_hig_shift_movement = 1
+  iabbrev -- —
+
+  augroup pencil
+    autocmd!
+    autocmd BufEnter * call pencil#init()
+  augroup END
 else
-  source ~/.vimrc.code
+  set number
+  set relativenumber
+  syntax on
 endif
-" }}}
 
 " vim:foldenable:foldmethod=marker:foldlevel=0
