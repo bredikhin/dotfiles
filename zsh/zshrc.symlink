@@ -84,9 +84,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Remove merged branches locally
-alias gcb='gco develop && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gcb='gco development && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 alias gup='git pull --rebase --autostash'
+
+alias gcd='git checkout development'
 
 # Reload coreaudiod / VDCAssistant (temporary fix for MBP 2016 issues)
 # alias resound='sudo launchctl unload /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist && sudo launchctl load /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist'
@@ -104,7 +106,7 @@ function gnb {
   then
     echo "usage: gnb <new branch name>"
   else
-    gco develop && gco -b $1 && gp -u origin $1
+    gco development && gco -b $1 && gp -u origin $1
   fi
 }
 
@@ -131,11 +133,5 @@ export PATH="$HOME/.tmuxifier/bin:$PATH"
 export TMUXIFIER_LAYOUT_PATH="$HOME/.dotfiles/tmuxifier"
 eval "$(tmuxifier init -)"
 
-# Load sessions described with tmuxifier
-# tmuxifier load-session lb && tmuxifier load-session default
-
 # Paths
-export GOPATH=$HOME/Projects/go
-export PATH=$PATH:$GOPATH/bin:$HOME/.local/lib/aws/bin:$HOME/bin
-
-export JIRA_DEFAULT_ACTION=dashboard
+export PATH=$PATH:$HOME/bin
