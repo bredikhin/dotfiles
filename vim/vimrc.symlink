@@ -45,7 +45,7 @@ NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'lyokha/vim-xkbswitch'
+NeoBundle 'plasticboy/vim-markdown'
 
 call neobundle#end()
 
@@ -174,10 +174,6 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 nmap <leader>m :Goyo<CR>
 
-" lyokha/vim-xkbswitch {{{2
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
-let g:XkbSwitchSkipIMappings = {'*': ['[', ']', '.', '>', ':', ';', ',', '{<CR>', '/*', '/*<CR>']}
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
@@ -262,7 +258,7 @@ nmap <leader>l :bnext<CR>
 nmap <leader>h :bprevious<CR>
 
 " Close the current buffer and move to the previous one
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>q :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
