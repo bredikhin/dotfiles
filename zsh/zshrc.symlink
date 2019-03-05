@@ -89,6 +89,9 @@ alias gcb='gco development && git branch --merged | grep -v "\*" | xargs -n 1 gi
 alias gup='git pull --rebase --autostash'
 
 alias gcd='git checkout development'
+alias grbd='git rebase development --autostash'
+
+alias v='vim'
 
 # Reload coreaudiod / VDCAssistant (temporary fix for MBP 2016 issues)
 # alias resound='sudo launchctl unload /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist && sudo launchctl load /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist'

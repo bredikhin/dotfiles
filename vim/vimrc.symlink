@@ -236,16 +236,20 @@ set dir=~/tmp
 function! NewDayOne(...)
   let cmd = ':silent w !dayone new'
   if a:0 > 0
-    let cmd = join([cmd, ' -t ', a:1])
     if a:0 > 1
+      let cmd = join([cmd, ' -t ', a:1])
       let cmd = join([cmd, ' -j ', a:2])
+    else
+      let cmd = join([cmd, ' -j ', a:1])
     endif
   endif
 
   execute cmd
 endfunc
 command! -nargs=* Dayone call NewDayOne(<f-args>)
-nmap <leader>mp :call NewDayOne('morning\ pages', 'Дневник')<CR>
+nmap <leader>mo :call NewDayOne('good\ morning', 'Дневник')<CR>
+nmap <leader>we :call NewDayOne('weekly\ retrospective', 'Дневник')<CR>
+nmap <leader>d1 :call NewDayOne('Дневник')<CR>
 
 " Bindings {{{1
 " Open a new empty buffer
