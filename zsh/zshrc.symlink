@@ -138,3 +138,10 @@ eval "$(tmuxifier init -)"
 
 # Paths
 export PATH=$PATH:$HOME/bin
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+
+eval "$(rbenv init -)"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
