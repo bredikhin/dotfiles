@@ -46,6 +46,9 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'yardnsm/vim-import-cost'
+NeoBundle 'prettier/vim-prettier'
+NeoBundle 'tpope/vim-obsession'
 
 call neobundle#end()
 

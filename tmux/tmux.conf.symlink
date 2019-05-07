@@ -110,6 +110,7 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 
 # resurrect options
 set -g @resurrect-save-bash-history 'on'
+set -g @resurrect-strategy-vim 'session'
 
 # continuum options
 set -g @continuum-boot 'on'

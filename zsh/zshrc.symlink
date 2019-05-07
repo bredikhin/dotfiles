@@ -145,3 +145,7 @@ prompt spaceship
 
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
