@@ -19,36 +19,30 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'henrik/vim-indexed-search'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ruanyl/vim-gh-line'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tpope/vim-sleuth'
-NeoBundle 'ntpeters/vim-better-whitespace'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'jremmen/vim-ripgrep'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'ElmCast/elm-vim'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'sheerun/vim-polyglot'
-NeoBundle 'jeetsukumaran/vim-buffergator'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'reedes/vim-pencil'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'yardnsm/vim-import-cost'
-NeoBundle 'prettier/vim-prettier'
-NeoBundle 'tpope/vim-obsession'
+NeoBundle 'Shougo/neobundle.vim' " Plugin management
+NeoBundle 'scrooloose/nerdtree' " NERDTree
+NeoBundle 'jistr/vim-nerdtree-tabs' " NERDTree across
+NeoBundle 'henrik/vim-indexed-search' " Search stats (Match x of y /zzz/)
+NeoBundle 'bling/vim-airline' " Status bar
+NeoBundle 'nanotech/jellybeans.vim' " Colorscheme
+NeoBundle 'airblade/vim-gitgutter' " Git commands
+NeoBundle 'tpope/vim-fugitive' " Gdiff, etc.
+NeoBundle 'ruanyl/vim-gh-line' " Jump to the line on Github
+NeoBundle 'scrooloose/syntastic' " Syntax highlighting
+NeoBundle 'tpope/vim-sleuth' " Heuristic indentation
+NeoBundle 'ntpeters/vim-better-whitespace' " Better whitespace?
+NeoBundle 'kien/ctrlp.vim' " Fuzzy file search
+NeoBundle 'jremmen/vim-ripgrep' " Rg-search
+NeoBundle 'Raimondi/delimitMate' " Autocompletion for quotes, parenthesis, etc.
+NeoBundle 'sheerun/vim-polyglot' " Language packs for Vim
+NeoBundle 'jeetsukumaran/vim-buffergator' " Better buffer management
+NeoBundle 'ConradIrwin/vim-bracketed-paste' " Paste without entering the paste mode
+NeoBundle 'reedes/vim-pencil' " Better prose writing
+NeoBundle 'junegunn/goyo.vim' " Focused mode
+NeoBundle 'plasticboy/vim-markdown' " Better markdown
+NeoBundle 'prettier/vim-prettier' " Prettier formatter
+NeoBundle 'luochen1990/rainbow' " Colored paired braces, etc.
+NeoBundle 'takac/vim-hardtime' " Vim-trainer to improve the usage of the movement keys
 
 call neobundle#end()
 
@@ -177,6 +171,19 @@ autocmd! User GoyoLeave call <SID>goyo_leave()
 
 nmap <leader>m :Goyo<CR>
 
+" luochen1990/rainbow {{{2
+let g:rainbow_active = 1
+
+" takac/vim-hardtime
+let g:hardtime_default_on = 1
+let g:list_of_normal_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:list_of_visual_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:list_of_insert_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:list_of_disabled_keys = []
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
@@ -195,11 +202,9 @@ set lazyredraw
 set modelines=1
 set spell spelllang=en_us
 set cursorline
-" set clipboard=unnamed
 
 " Mouse
 set ttyfast
-" set mouse=a
 
 " Scrolling
 set scrolloff=10
@@ -262,7 +267,7 @@ nmap <leader>T :enew<cr>
 nmap <leader>l :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>h :bprevious<CR>
+nmap <leader><S-l> :bprevious<CR>
 
 " Close the current buffer and move to the previous one
 nmap <leader>q :bp <BAR> bd #<CR>
