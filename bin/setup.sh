@@ -4,10 +4,6 @@
 # tmuxifier
 rm -rf ~/.tmuxifier && git clone https://github.com/bredikhin/tmuxifier.git ~/.tmuxifier
 
-# git up
-# install ruby, rubygems, ruby-dev first, e.g. `sudo apt-get install ruby rubygems ruby-dev`
-sudo gem install git-up
-
 # vim config
 # install vim first, e.g. `sudo apt-get install vim`
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
