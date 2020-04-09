@@ -4,7 +4,6 @@ if initialize_session "default"; then
   split_v 50
   select_pane 1
   split_h 50
-  run_cmd "sudo htop"
   select_pane 3
   split_h 50
   select_pane 1

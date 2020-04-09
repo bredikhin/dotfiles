@@ -1,6 +1,0 @@
-new_window "lblogs"
-window_root "~/Projects/lb"
-run_cmd "tail -f ./lookbooks/app/tmp/logs/error.log"
-split_v 50
-select_pane 2
-run_cmd "tail -f ./lbapi/app/log/app.log"
