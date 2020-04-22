@@ -31,7 +31,6 @@ NeoBundle 'ruanyl/vim-gh-line' " Jump to the line on Github
 NeoBundle 'scrooloose/syntastic' " Syntax highlighting
 NeoBundle 'tpope/vim-sleuth' " Heuristic indentation
 NeoBundle 'ntpeters/vim-better-whitespace' " Better whitespace?
-NeoBundle 'kien/ctrlp.vim' " Fuzzy file search
 NeoBundle 'jremmen/vim-ripgrep' " Rg-search
 NeoBundle 'Raimondi/delimitMate' " Autocompletion for quotes, parenthesis, etc.
 NeoBundle 'sheerun/vim-polyglot' " Language packs for Vim
@@ -43,6 +42,9 @@ NeoBundle 'plasticboy/vim-markdown' " Better markdown
 NeoBundle 'prettier/vim-prettier' " Prettier formatter
 NeoBundle 'luochen1990/rainbow' " Colored paired braces, etc.
 NeoBundle 'takac/vim-hardtime' " Vim-trainer to improve the usage of the movement keys
+NeoBundle 'easymotion/vim-easymotion' " Vim motions on speed!
+NeoBundle 'HerringtonDarkholme/yats.vim' " Typescript syntax highlighting
+NeoBundle 'junegunn/fzf.vim' " Fuzzy searching
 
 call neobundle#end()
 
@@ -91,34 +93,11 @@ map <leader>e :Errors<cr>
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 
-" kien/ctrlp.vim {{{
-" Setup some default ignores
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn)|\_site)$',
-  \ 'file': '\v\.(exe|so|dll|class|png|jpg|jpeg)$',
-\}
-
 " Use the nearest .git directory as the cwd
 let g:ctrlp_working_path_mode = 'r'
 
 " Open multiple files in tabs
 let g:ctrlp_open_multiple_files = 'i'
-
-" Use a leader instead of the actual named binding
-nmap <leader>p :CtrlP<cr>
-
-" Easy bindings for its various modes
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bm :CtrlPMixed<cr>
-nmap <leader>bs :CtrlPMRU<cr>
-
-" Use ripgrep in CtrlP
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-  set wildignore+=*/.git/*,*/tmp/*,*.swp
-endif
 
  " jeetsukumaran/vim-buffergator {{{2
 " Use the right side of the screen
@@ -185,6 +164,33 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
+
+" easymotion/vim-easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" junegunn/fzf.vim
+set rtp+=/usr/local/opt/fzf
+" CtrlP replacement
+nnoremap <C-p> :Files<Cr>
+" Rg replacement
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
