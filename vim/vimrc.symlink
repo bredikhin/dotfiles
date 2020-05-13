@@ -42,7 +42,6 @@ NeoBundle 'plasticboy/vim-markdown' " Better markdown
 NeoBundle 'prettier/vim-prettier' " Prettier formatter
 NeoBundle 'luochen1990/rainbow' " Colored paired braces, etc.
 NeoBundle 'takac/vim-hardtime' " Vim-trainer to improve the usage of the movement keys
-NeoBundle 'easymotion/vim-easymotion' " Vim motions on speed!
 NeoBundle 'HerringtonDarkholme/yats.vim' " Typescript syntax highlighting
 NeoBundle 'junegunn/fzf.vim' " Fuzzy searching
 
@@ -164,21 +163,6 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
-
-" easymotion/vim-easymotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
-" Turn on case-insensitive feature
-let g:EasyMotion_smartcase = 1
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
 
 " junegunn/fzf.vim
 set rtp+=/usr/local/opt/fzf
