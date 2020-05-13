@@ -167,7 +167,8 @@ let g:hardtime_maxcount = 2
 " junegunn/fzf.vim
 set rtp+=/usr/local/opt/fzf
 " CtrlP replacement
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-f> :Files<Cr>
 " Rg replacement
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -175,6 +176,10 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
+" Fuzzy search defined commands
+nnoremap <C-c> :Commands<CR>
+" Fuzzy search through :command history
+nnoremap <C-h> :History<CR>
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
