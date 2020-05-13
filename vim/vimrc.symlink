@@ -281,7 +281,7 @@ map <leader>rr :source ~/.vimrc<CR>
 nmap <leader>v :e ~/.vimrc<CR>
 
 " ESC
-inoremap jj <ESC>
+inoremap jj <ESC>:w<CR>
 
 " Fixed n/N search direction
 nnoremap <expr> n  'Nn'[v:searchforward]
