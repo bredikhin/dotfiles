@@ -57,7 +57,7 @@ NeoBundleCheck
 " Plugin Options {{{1
 " scrooloose/nerdtree {{{2
 map <c-t> :NERDTreeToggle<CR>
-nmap ,n :NERDTreeFind<CR>
+nmap <leader>n :NERDTreeFind<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 let g:nerdtree_tabs_open_on_gui_startup = 0
 
@@ -282,6 +282,9 @@ nmap <leader>v :e ~/.vimrc<CR>
 
 " ESC
 inoremap jj <ESC>:w<CR>
+
+" Quick close
+nmap Q :bd<CR>
 
 " Fixed n/N search direction
 nnoremap <expr> n  'Nn'[v:searchforward]
