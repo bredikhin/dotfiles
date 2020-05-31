@@ -30,6 +30,9 @@ NeoBundle 'tpope/vim-fugitive' " Gdiff, etc.
 NeoBundle 'ruanyl/vim-gh-line' " Jump to the line on Github
 NeoBundle 'scrooloose/syntastic' " Syntax highlighting
 NeoBundle 'tpope/vim-sleuth' " Heuristic indentation
+NeoBundle 'tpope/vim-surround' " Adds new verbs to operate surroundings, e.g. cst<h1>
+NeoBundle 'tpope/vim-repeat' " Makes plugin-based actions repeatable
+NeoBundle 'tpope/vim-commentary' " Adds a new verb gc to comment / uncomment lines, words, etc.
 NeoBundle 'ntpeters/vim-better-whitespace' " Better whitespace?
 NeoBundle 'jremmen/vim-ripgrep' " Rg-search
 NeoBundle 'Raimondi/delimitMate' " Autocompletion for quotes, parenthesis, etc.
