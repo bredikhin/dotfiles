@@ -93,6 +93,8 @@ alias grbd='git rebase develop --autostash'
 
 alias v='vim'
 
+alias rm=trash
+
 # Reload coreaudiod / VDCAssistant (temporary fix for MBP 2016 issues)
 # alias resound='sudo launchctl unload /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist && sudo launchctl load /System/Library/LaunchDaemons/com.apple.audio.coreaudiod.plist'
 # alias revideo='sudo killall VDCAssistant'

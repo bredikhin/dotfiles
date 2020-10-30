@@ -1,6 +1,8 @@
 # quick and dirty: assuming the old files can be removed and the files to be
 # symlinked are in ~/.dotfiles/
 
+npm install --global trash-cli
+
 # tmuxifier
 rm -rf ~/.tmuxifier && git clone https://github.com/bredikhin/tmuxifier.git ~/.tmuxifier
 
