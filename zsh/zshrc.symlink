@@ -150,10 +150,9 @@ prompt spaceship
 eval "$(rbenv init -)"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 
-. $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="--history=$HOME/.fzf_history"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
+export ANDROID_SDK="$HOME/Library/Android/sdk"
