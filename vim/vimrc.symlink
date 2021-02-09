@@ -21,32 +21,30 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 NeoBundle 'Shougo/neobundle.vim' " Plugin management
 NeoBundle 'scrooloose/nerdtree' " NERDTree
-NeoBundle 'jistr/vim-nerdtree-tabs' " NERDTree across
-NeoBundle 'henrik/vim-indexed-search' " Search stats (Match x of y /zzz/)
 NeoBundle 'bling/vim-airline' " Status bar
 NeoBundle 'nanotech/jellybeans.vim' " Colorscheme
 NeoBundle 'airblade/vim-gitgutter' " Git commands
 NeoBundle 'tpope/vim-fugitive' " Gdiff, etc.
 NeoBundle 'ruanyl/vim-gh-line' " Jump to the line on Github
-NeoBundle 'scrooloose/syntastic' " Syntax highlighting
 NeoBundle 'tpope/vim-sleuth' " Heuristic indentation
 NeoBundle 'tpope/vim-surround' " Adds new verbs to operate surroundings, e.g. cst<h1>
 NeoBundle 'tpope/vim-repeat' " Makes plugin-based actions repeatable
 NeoBundle 'tpope/vim-commentary' " Adds a new verb gc to comment / uncomment lines, words, etc.
-NeoBundle 'ntpeters/vim-better-whitespace' " Better whitespace?
-NeoBundle 'jremmen/vim-ripgrep' " Rg-search
+NeoBundle 'ntpeters/vim-better-whitespace' " Mark extra whitespaces
 NeoBundle 'Raimondi/delimitMate' " Autocompletion for quotes, parenthesis, etc.
 NeoBundle 'sheerun/vim-polyglot' " Language packs for Vim
+NeoBundle 'dense-analysis/ale' " Linting
 NeoBundle 'jeetsukumaran/vim-buffergator' " Better buffer management
 NeoBundle 'ConradIrwin/vim-bracketed-paste' " Paste without entering the paste mode
 NeoBundle 'reedes/vim-pencil' " Better prose writing
 NeoBundle 'junegunn/goyo.vim' " Focused mode
 NeoBundle 'plasticboy/vim-markdown' " Better markdown
-NeoBundle 'prettier/vim-prettier' " Prettier formatter
 NeoBundle 'luochen1990/rainbow' " Colored paired braces, etc.
 NeoBundle 'takac/vim-hardtime' " Vim-trainer to improve the usage of the movement keys
-NeoBundle 'HerringtonDarkholme/yats.vim' " Typescript syntax highlighting
 NeoBundle 'junegunn/fzf.vim' " Fuzzy searching
+NeoBundle 'neoclide/coc.nvim', 'release', { 'build': { 'others': 'git checkout release' } } " Intellisense engine for Vim
+NeoBundle 'ludovicchabant/vim-gutentags' " Tag management
+NeoBundle 'prettier/vim-prettier' " Prettier formatter
 
 call neobundle#end()
 
@@ -62,7 +60,6 @@ NeoBundleCheck
 map <c-t> :NERDTreeToggle<CR>
 nmap <leader>n :NERDTreeFind<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
-let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " bling/vim-airline {{{2
 " Always show statusbar
@@ -88,19 +85,6 @@ nmap [h <Plug>GitGutterPrevHunk
 " tpope/vim-fugitive {{{2
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" scrooloose/syntastic {{{2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-map <leader>e :Errors<cr>
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-
-" Use the nearest .git directory as the cwd
-let g:ctrlp_working_path_mode = 'r'
-
-" Open multiple files in tabs
-let g:ctrlp_open_multiple_files = 'i'
-
  " jeetsukumaran/vim-buffergator {{{2
 " Use the right side of the screen
 let g:buffergator_viewport_split_policy = 'R'
@@ -117,16 +101,9 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 " View the entire list of buffers open
 nmap <leader>bl :BuffergatorOpen<cr>
 
-" SirVer/ultisnips {{{2
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
-
 " reedes/vim-pencil {{{2
 set nocompatible
 filetype plugin on
-
 let g:pencil#wrapModeDefault = 'soft'
 
 " junegunn/goyo.vim {{{2
@@ -156,7 +133,7 @@ nmap <leader>m :Goyo<CR>
 " luochen1990/rainbow {{{2
 let g:rainbow_active = 1
 
-" takac/vim-hardtime
+" takac/vim-hardtime {{{2
 let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:list_of_visual_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
@@ -167,11 +144,13 @@ let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
 let g:hardtime_maxcount = 2
 
-" junegunn/fzf.vim
+" junegunn/fzf.vim {{{2
 set rtp+=/usr/local/opt/fzf
+
 " CtrlP replacement
 nnoremap <C-p> :GFiles<Cr>
 nnoremap <C-f> :Files<Cr>
+
 " Rg replacement
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -183,6 +162,42 @@ command! -bang -nargs=* Rg
 nnoremap <C-c> :Commands<CR>
 " Fuzzy search through :command history
 nnoremap <C-h> :History<CR>
+
+" ludovicchabant/vim-gutentags {{{2
+set statusline+=%{gutentags#statusline()}
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+
+" dense-analysis/ale {{{2
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+let g:ale_javascript_prettier_options = '--stdin-filepath'
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '!'
+let g:ale_sign_warning = '?'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+function! AleStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+    return l:counts.total == 0 ? 'OK' : printf(
+        \   '%d⨉ %d⚠ ',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+set statusline+=%=
+set statusline+=\ %{AleStatus()}
+
+" prettier/vim-prettier {{{2
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
@@ -201,6 +216,9 @@ set lazyredraw
 set modelines=1
 set spell spelllang=en_us
 set cursorline
+
+" Search results
+set shortmess-=S
 
 " Mouse
 set ttyfast
@@ -239,25 +257,6 @@ endif
 set backupdir=./.backup,~/.backup,.,/tmp
 set dir=~/tmp
 
-" Day One
-function! NewDayOne(...)
-  let cmd = ':silent w !dayone new'
-  if a:0 > 0
-    if a:0 > 1
-      let cmd = join([cmd, ' -t ', a:1])
-      let cmd = join([cmd, ' -j ', a:2])
-    else
-      let cmd = join([cmd, ' -j ', a:1])
-    endif
-  endif
-
-  execute cmd
-endfunc
-command! -nargs=* Dayone call NewDayOne(<f-args>)
-nmap <leader>mo :call NewDayOne('good\ morning', 'Дневник')<CR>
-nmap <leader>we :call NewDayOne('weekly\ retrospective', 'Дневник')<CR>
-nmap <leader>d1 :call NewDayOne('Дневник')<CR>
-
 " Bindings {{{1
 " Open a new empty buffer
 nmap <leader>T :enew<cr>
@@ -284,7 +283,8 @@ map <leader>rr :source ~/.vimrc<CR>
 nmap <leader>v :e ~/.vimrc<CR>
 
 " ESC
-inoremap jj <ESC>:w<CR>
+inoremap jj <ESC>
+inoremap ,, <ESC>:w<CR>
 
 " Quick close
 nmap Q :bd<CR>

@@ -3,8 +3,8 @@
 
 npm install --global trash-cli
 
-# tmuxifier
-rm -rf ~/.tmuxifier && git clone https://github.com/bredikhin/tmuxifier.git ~/.tmuxifier
+# tmuxinator
+rm -rf ~/.tmuxinator && ln -s ~/.dotfiles/tmuxinator ~/.tmuxinator
 
 # vim config
 # install vim first, e.g. `sudo apt-get install vim`
