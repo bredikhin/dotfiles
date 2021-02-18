@@ -121,7 +121,7 @@ function gnb {
   then
     echo "usage: gnb <new branch name>"
   else
-    gco develop && gco -b $1 && gp -u origin $1
+    gco master && gco -b $1 && gp -u origin $1
   fi
 }
 
@@ -151,6 +151,9 @@ alias zr='source ~/.zshrc'
 
 # Yarn
 alias y='yarn'
+alias ys='yarn start'
+alias yt='yarn test'
+alias yl='yarn lint'
 
 # npm
 alias n='npm install'
