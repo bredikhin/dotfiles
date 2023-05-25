@@ -106,10 +106,13 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/l
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # remove merged branches locally
-alias gcb='gco develop && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias gcb='gco master && git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # pull remote changes and rebase
 alias gup='git pull --rebase --autostash'
+
+# force push
+alias gpf='git push --force'
 
 # develop
 alias gcd='git checkout develop'
@@ -121,7 +124,7 @@ function gnb {
   then
     echo "usage: gnb <new branch name>"
   else
-    gco master && gco -b $1 && gp -u origin $1
+    gco main && gco -b $1 && gp -u origin $1
   fi
 }
 
@@ -155,23 +158,38 @@ alias ys='yarn start'
 alias yt='yarn test'
 alias yl='yarn lint'
 
-# npm
-alias n='npm install'
-
-# tmuxifier
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-export TMUXIFIER_LAYOUT_PATH="$HOME/.dotfiles/tmuxifier"
-eval "$(tmuxifier init -)"
-
-# ruby
-eval "$(rbenv init -)"
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
-
 # fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--history=$HOME/.fzf_history"
+export FZF_DEFAULT_OPTS="--history=$HOME/.fzf_history --bind=down:down,up:up"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # android
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
 export ANDROID_SDK="$HOME/Library/Android/sdk"
+
+# homebrew
+CPU=$(uname -p)
+if [[ "$CPU" == "arm" ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+    alias oldbrew=/usr/local/bin/brew
+else
+    export PATH="/usr/local/bin:$PATH"
+fi
+# export PATH="/usr/local/Homebrew/bin:$PATH" # For Rosetta 2 version
+# export PATH="/opt/homebrew/bin:$PATH" # For native ARM version
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+
+PATH="/Users/rbr/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/rbr/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/rbr/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/rbr/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/rbr/perl5"; export PERL_MM_OPT;
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

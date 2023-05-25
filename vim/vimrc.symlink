@@ -41,10 +41,12 @@ NeoBundle 'junegunn/goyo.vim' " Focused mode
 NeoBundle 'plasticboy/vim-markdown' " Better markdown
 NeoBundle 'luochen1990/rainbow' " Colored paired braces, etc.
 NeoBundle 'takac/vim-hardtime' " Vim-trainer to improve the usage of the movement keys
-NeoBundle 'junegunn/fzf.vim' " Fuzzy searching
+NeoBundle 'junegunn/fzf', " Fuzzy searching
+NeoBundle 'junegunn/fzf.vim' " Required for fzf as well
 NeoBundle 'neoclide/coc.nvim', 'release', { 'build': { 'others': 'git checkout release' } } " Intellisense engine for Vim
 NeoBundle 'ludovicchabant/vim-gutentags' " Tag management
 NeoBundle 'prettier/vim-prettier' " Prettier formatter
+NeoBundle 'machakann/vim-swap' " Swap function arguments, etc.
 
 call neobundle#end()
 
@@ -55,10 +57,12 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 
+runtime macros/matchit.vim
+
 " Plugin Options {{{1
 " scrooloose/nerdtree {{{2
 map <c-t> :NERDTreeToggle<CR>
-nmap <leader>n :NERDTreeFind<CR>
+map <c-n> :NERDTreeFind<CR>
 let NERDTreeHijackNetrw=1 "Put Nerdtree into a window
 
 " bling/vim-airline {{{2
@@ -163,7 +167,6 @@ let g:rainbow_active = 1
 let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:list_of_visual_keys = ["-", "+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-let g:list_of_insert_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:list_of_disabled_keys = []
 let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 let g:hardtime_ignore_quickfix = 1
@@ -175,15 +178,15 @@ set rtp+=/usr/local/opt/fzf
 
 " CtrlP replacement
 nnoremap <C-p> :GFiles<Cr>
-nnoremap <C-f> :Files<Cr>
 
 " Rg replacement
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0 ? fzf#vim#with_preview({'options': ['--delimiter=--nth 4..', '--bind=up:up,down:down']}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': ['--delimiter=--nth 4..', '--bind=up:up,down:down']}, 'right:50%:hidden', '?'),
   \   <bang>0)
+nmap <Leader>/ :Rg<Space>
 " Fuzzy search defined commands
 nnoremap <C-c> :Commands<CR>
 " Fuzzy search through :command history
@@ -198,6 +201,9 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -281,6 +287,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+nnoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <expr><C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<Right>"
+inoremap <expr><C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<Left>"
 
 " ludovicchabant/vim-gutentags {{{2
 set statusline+=%{gutentags#statusline()}
@@ -289,7 +300,9 @@ let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
 
 " prettier/vim-prettier {{{2
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:prettier#quickfix_enabled = 0
+let g:prettier#quickfix_auto_focus = 0
+autocmd BufWritePre,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 
 " Non-plugin Stuff {{{1
 let mapleader = ","
